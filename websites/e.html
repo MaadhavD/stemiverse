@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clicker Game</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #clicker {
+      width: 200px;
+      height: 100px;
+      line-height: 100px;
+      margin: 50px auto;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    #score {
+      font-size: 20px;
+    }
+  </style>
+  <script>
+    var score = 0;
+
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("clicker").addEventListener("click", function() {
+        score++;
+        document.getElementById("score").textContent = "Score: " + score;
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Clicker Game</h1>
+  <div id="clicker">Click Me!</div>
+  <p id="score">Score: 0</p>
+</body>
+</html>
