@@ -22,52 +22,83 @@
         }
         
         header {
-            background-color: #000a41;
-            padding: 20px;
-            display: flex;
-            align-items: center;
+        background-color: #000a41;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
         }
         
-        
-        h1 {
-            font-size: 32px;
-            color: #fff;
-            margin: 0;
-            letter-spacing: 2px;
-            margin-right: 20px;
-        }
-        
-        .logo {
-        max-width: 150px;
-        display: block;
-        margin-right: auto;
-        margin-left: 20px;
+        .header-rectangle {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #6c63ff;
+        padding: 10px;
+        z-index: 3;
+
+    }
+
+    .header-rectangle h3 {
+        color: #fff;
+        font-size: 14px;
+        margin: 0;
+        text-align: center;
         }
 
-        
+        h1 {
+        font-size: 26px;
+        color: #fff;
+        margin: 0;
+        letter-spacing: 2px;
+        margin-left: 0;
+        margin-right: auto;
+        }
+
+        .logo {
+        max-width: 75px;
+        display: block;
+        margin-left: 0;
+        margin-right: 20px; 
+        animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+            }
+
+
         nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
         }
-        
+
         nav ul li {
-            margin-right: 20px;
+        margin-left: 40px;
         }
-        
+
         nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s ease;
+        color: #fff;
+        text-decoration: none;
+        font-size: 20px;
+        transition: color 0.3s ease;
         }
-        
+
         nav ul li a:hover {
-            color: #bfbfff;
+        color: #bfbfff;
         }
+
         
         main {
             margin: 20px;
@@ -86,6 +117,8 @@
             color: #fff;
             position: relative;
             animation: fadeIn 1s ease;
+            z-index: 1;
+
         }
         
         .overlay {
@@ -102,7 +135,7 @@
         }
         
         .hero h2 {
-            font-sigze: 36px;
+            font-size: 36px;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -111,7 +144,10 @@
             font-size: 20px;
             margin-bottom: 30px;
         }
-
+        .hero.fade-out {
+        opacity: 0;
+        transition: opacity 3s ease; /* Adjust the duration of the transition */
+        }
         .btn {
             display: inline-block;
             background-color: #b794f4;
@@ -180,6 +216,8 @@
             padding: 40px;
             margin-bottom: 20px;
             text-align: center;
+            animation: fadeIn 1s ease;
+
         }
         
         .section-title {
@@ -240,7 +278,9 @@
             position: relative;
             max-height: 400px;
             overflow: hidden;
-            margin-top: 40px;
+            margin-top: 0px;
+            z-index:2;
+
         }
         
         .slider-image {
@@ -248,22 +288,29 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            margin-top: 20px;
+            z-index:2;
+
+
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>SF Stemiverse</h1>
         <img class="logo" src="logo.png" alt="Stemiverse">
+        <h1>SF Stemiverse</h1>
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About Us</a></li>
-                <li><a href="#">Programs</a></li>
-                <li><a href="#">Events</a></li>
                 <li><a href="#">Contact</a></li>
+                <li><a href="#">Initiatives</a></li>
+                <li><a href="#">Donate</a></li>
             </ul>
         </nav>
+        <div class="header-rectangle">
+            <h3>Empowering Young Minds Through STEM Education</h3>
+        </div>
     </header>
     
     <div class="dark-mode-toggle">
@@ -317,15 +364,20 @@
         // Image slider functionality
         const sliderImages = document.querySelectorAll('.slider-image');
         let currentImageIndex = 0;
-
+        const hero = document.querySelector('.hero');
+      
         function changeSliderImage() {
-            document.querySelector('.hero').style.backgroundImage = `url('${sliderImages[currentImageIndex].src}')`;
+          hero.classList.add('fade-out'); // Apply fade-out transition class
+          setTimeout(() => {
+            hero.style.backgroundImage = `url('${sliderImages[currentImageIndex].src}')`;
+            hero.classList.remove('fade-out'); // Remove fade-out transition class
             currentImageIndex = (currentImageIndex + 1) % sliderImages.length;
+          }, 500); // Adjust the duration of the transition (in milliseconds)
         }
-
+      
         // Change image every 3 seconds (adjust the interval as desired)
         setInterval(changeSliderImage, 3000);
-    </script>
+      </script>
     <script>
         // Dark mode toggle functionality
         const darkModeToggle = document.getElementById('dark-mode-toggle');
