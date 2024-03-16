@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>monek</title>
+    <style>
+        body{
+         background-color: black;   
+        }
+        .outer {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .frame{
+            width:400px ;
+            height:400px ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(0, 0, 0);
+
+        }
+        .square1{
+            width: 120px; 
+            height: 120px;
+            border: 1px solid white;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            position: absolute;
+
+        }
+        #anim1{
+            animation-name: s1;
+
+        }
+        @keyframes s1{
+            50%{
+                transform: rotate(180deg);
+                height: 70px;
+                border-radius: 50%;
+            }
+        }
+        #anim2{
+            animation-name: s2;
+
+        }
+        @keyframes s2{
+            50%{
+                transform: rotate(160deg);
+                height: 70px;
+                border-radius: 50%;
+            }
+        }
+        #anim3{
+            animation-name: s3;
+
+        }
+        @keyframes s3{
+            50%{
+                transform: rotate(140deg);
+                height: 70px;
+                border-radius: 50%;
+            }
+        }
+        #anim4{
+            animation-name: s4;
+
+        }
+        @keyframes s4{
+            50%{
+                transform: rotate(120deg);
+                height: 70px;
+                border-radius: 50%;
+            }
+        }
+        #anim5{
+            animation-name: s5;
+
+        }
+        @keyframes s5{
+            50%{
+                transform: rotate(100deg);
+                height: 70px;
+                border-radius: 50%;
+            }
+        }
+        #anim6{
+            animation-name: s6;
+
+        }
+        @keyframes s6{
+            50%{
+                transform: rotate(80deg);
+                height: 70px;
+                border-radius: 50%;
+            }
+        }
+        #anim7{
+            animation-name: s7;
+
+        }
+        @keyframes s7{
+            50%{
+                transform: rotate(60deg);
+                height: 70px;
+                border-radius: 50%;
+            }
+        }
+        #anim8{
+            animation-name: s2;
+
+        }
+        @keyframes s8{
+            50%{
+                transform: rotate(40deg);
+                height: 70px;
+                border-radius: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="frame">
+            <div class="square1" id="anim1"></div>
+            <div class="square1"id="anim2"></div>
+            <div class="square1"id="anim3"></div>
+            <div class="square1"id="anim4"></div>
+            <div class="square1"id="anim5"></div>
+            <div class="square1"id="anim6"></div>
+            <div class="square1"id="anim7"></div>
+            <div class="square1"id="anim8"></div>
+        </div>
+    </div>
+</body>
+<html>
