@@ -124,3 +124,8 @@ body{
            border-radius: 50%;
        }
    }
+   .loadDone {
+     opacity: 0;
+     visibility: hidden;
+   }
+   

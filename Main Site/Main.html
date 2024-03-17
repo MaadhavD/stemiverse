@@ -1,108 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/CSS/normalize.css">
-        <link rel="stylesheet" href="/css/styles.css">
-        <title>Stemiverse</title>
-    </head>
-    <body>
-        <nav class="nav collapsible">
-            <!--put the logo in images call it logo then replace the .svg here with the file type-->
-            <a class="nav__brand" href="#"><img class = "icon" src="/images/logo.jpg" alt="Stemiverse Logo" /></a>
-            <svg class="icon icon--white nav__toggler">
-            <use xlink:href="/images/sprite.svg#menu"></use>
-            </svg>
-            <ul class="list nav__list collapsible__content">
-            <li class="nav__item"><a href="#">Donate</a></li>
-            <li class="nav__item"><a href="/animation/Star.html">star</a></li>
-            <li class="nav__item"><a href="#">Domain</a></li>
-            <li class="nav__item"><a href="#">Pricing</a></li>
-            </ul>
-        </nav>
-        <section class="block block--dark block--skewed-left">
-            <div class="container">
-              <h2 class="block__heading">Stemiverse</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, a.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/CSS/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Stemiverse</title>
+  </head>
+  <body>
+    <div class="loader">
+      <div class="frame">
+        <div class="square1" id="anim1"></div>
+        <div class="square1" id="anim2"></div>
+        <div class="square1" id="anim3"></div>
+        <div class="square1" id="anim4"></div>
+        <div class="square1" id="anim5"></div>
+        <div class="square1" id="anim6"></div>
+        <div class="square1" id="anim7"></div>
+        <div class="square1" id="anim8"></div>
+        <div class="square1" id="anim9"></div>
+      </div>
+    </div>
+    <div class="page--hidden">
+      <nav class="nav collapsible">
+        <!--put the logo in images call it logo then replace the .svg here with the file type-->
+        <a class="nav__brand" href="#"
+          ><img class="icon" src="/images/logo.jpg" alt="Stemiverse Logo"
+        /></a>
+        <svg class="icon icon--white nav__toggler">
+          <use xlink:href="/images/sprite.svg#menu"></use>
+        </svg>
+        <ul class="list nav__list collapsible__content">
+          <li class="nav__item"><a href="Donate.html">Donate</a></li>
+          <li class="nav__item"><a href="/animation/Star.html">star</a></li>
+          <li class="nav__item"><a href="#">Domain</a></li>
+          <li class="nav__item"><a href="#">Pricing</a></li>
+        </ul>
+      </nav>
+      <section class="block block--dark block--skewed-left">
+        <div class="container">
+          <h2 class="block__heading">Stemiverse</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, a.
+          </p>
+        </div>
+      </section>
+      <footer class="block block--dark footer">
+        <div class="container grid footer__sections">
+          <section class="collapsible collapsible--expanded footer__section">
+            <header class="collapsible__header">
+              <h2 class="collapsible__heading footer__heading">Products</h2>
+              <svg class="icon icon--white collapsible__chevron">
+                <use xlink:href="/images/sprite.svg#chevron"></use>
+              </svg>
+            </header>
+            <div class="collapsible__content">
+              <ul class="list">
+                <li>
+                  <a href="#">Website Hosting</a>
+                </li>
+                <li>
+                  <a href="#">Free Automated Wordpress</a>
+                </li>
+                <li>
+                  <a href="#">Migrations</a>
+                </li>
+              </ul>
             </div>
-        </section>
-        <footer class="block block--dark footer">
-            <img class = "icon" src="/images/logo.jpg" alt="Stemiverse Logo" />
-            <div class="container grid footer__sections">
-              <section class="collapsible collapsible--expanded footer__section">
-                <header class="collapsible__header">
-                  <h2 class="collapsible__heading footer__heading">Products</h2>
-                  <svg class="icon icon--white collapsible__chevron">
-                    <use xlink:href="/images/sprite.svg#chevron"></use>
-                  </svg>
-                </header>
-                <div class="collapsible__content">
-                  <ul class="list">
-                    <li>
-                      <a href="#">Website Hosting</a>
-                    </li>
-                    <li>
-                      <a href="#">Free Automated Wordpress</a>
-                    </li>
-                    <li>
-                      <a href="#">Migrations</a>
-                    </li>
-                  </ul>
-                </div>
-              </section>
-              <section class="collapsible footer__section">
-                <header class="collapsible__header">
-                  <h2 class="collapsible__heading footer__heading">Company</h2>
-                  <svg class="icon icon--white collapsible__chevron">
-                    <use xlink:href="/images/sprite.svg#chevron"></use>
-                  </svg>
-                </header>
-                <div class="collapsible__content">
-                  <ul class="list">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Affiliates</a></li>
-                    <li><a href="#">Blog</a></li>
-                  </ul>
-                </div>
-              </section>
-              <section class="collapsible footer__section">
-                <header class="collapsible__header">
-                  <h2 class="collapsible__heading footer__heading">Support</h2>
-                  <svg class="icon icon--white collapsible__chevron">
-                    <use xlink:href="/images/sprite.svg#chevron"></use>
-                  </svg>
-                </header> 
-                <div class="collapsible__content">
-                  <ul class="list">
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Knowledge Base</a></li>
-                    <li><a href="#">FAQ</a></li>
-                  </ul>
-                </div>
-              </section>
-              <section class="collapsible footer__section">
-                <header class="collapsible__header">
-                  <h2 class="collapsible__heading footer__heading">Domains</h2>
-                  <svg class="icon icon--white collapsible__chevron">
-                    <use xlink:href="/images/sprite.svg#chevron"></use>
-                  </svg>
-                </header>
-                <div class="collapsible__content">
-                  <ul class="list">
-                    <li><a href="#">Domain Checker</a></li>
-                    <li><a href="#">Domain Transfer</a></li>
-                    <li><a href="#">Free Domain</a></li>
-                  </ul>
-                </div>
-              </section>
-              <section class="footer__brand">
-                <img src="images/logo.svg" alt="" />
-                <p class="footer__copyright">501c certified</p>
-              </section>
+          </section>
+          <section class="collapsible footer__section">
+            <header class="collapsible__header">
+              <h2 class="collapsible__heading footer__heading">Company</h2>
+              <svg class="icon icon--white collapsible__chevron">
+                <use xlink:href="/images/sprite.svg#chevron"></use>
+              </svg>
+            </header>
+            <div class="collapsible__content">
+              <ul class="list">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Affiliates</a></li>
+                <li><a href="#">Blog</a></li>
+              </ul>
             </div>
-          </footer>
-        <script src="/js/main.js"></script>
-    </body>
+          </section>
+          <section class="collapsible footer__section">
+            <header class="collapsible__header">
+              <h2 class="collapsible__heading footer__heading">Support</h2>
+              <svg class="icon icon--white collapsible__chevron">
+                <use xlink:href="/images/sprite.svg#chevron"></use>
+              </svg>
+            </header>
+            <div class="collapsible__content">
+              <ul class="list">
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Knowledge Base</a></li>
+                <li><a href="#">FAQ</a></li>
+              </ul>
+            </div>
+          </section>
+          <section class="collapsible footer__section">
+            <header class="collapsible__header">
+              <h2 class="collapsible__heading footer__heading">Domains</h2>
+              <svg class="icon icon--white collapsible__chevron">
+                <use xlink:href="/images/sprite.svg#chevron"></use>
+              </svg>
+            </header>
+            <div class="collapsible__content">
+              <ul class="list">
+                <li><a href="#">Domain Checker</a></li>
+                <li><a href="#">Domain Transfer</a></li>
+                <li><a href="#">Free Domain</a></li>
+              </ul>
+            </div>
+          </section>
+          <section class="footer__brand">
+            <img src="/images/logo.jpg" alt="" />
+            <p class="footer__copyright">501c certified</p>
+          </section>
+        </div>
+      </footer>
+    </div>
+    <script src="/js/main.js"></script>
+  </body>
 </html>
 <!--maadhav do you see the comments type something if you do see these comments-->
