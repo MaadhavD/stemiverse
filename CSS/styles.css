@@ -15,23 +15,59 @@
   box-sizing: border-box;
 }
 
+/* butter.css */
+* {
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  margin: 0;
+}
+.test-div {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+}
+.black-div {
+  background-color: #000000;
+}
+.test-heading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.white-heading {
+  color: #ffffff;
+}
+
 /*Typography*/
 ::selection {
   background: var(--colorPrimary);
   color: white;
 }
+.module {
+  width: 300px;
+  height: 200px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
 html {
   font-size: 62.5%;
-  scroll-behavior: smooth;
 }
-
+/* maadhav i can't start live server can't see if thwhis wyorks lmk if it does wait we can share a tcp server  one sec ok i shared it you can you see ???*/
 body {
   font-family: Inter, Arial, Arial, Helvetica, sans-serif;
   font-size: 2.4rem;
   line-height: 1.5;
   color: var(--colorBody);
 }
-
+main{
+  width : 100%;
+  height: 100%;
+  position: relative;
+}
+  
 h1,
 h2,
 h3 {

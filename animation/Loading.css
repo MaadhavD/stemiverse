@@ -14,7 +14,7 @@ body{
        justify-content: center;
        align-items: center;
        background-color: #121212;
-
+/*hi there*/ 
    }
    .square1{
        width: 300px; 
@@ -25,7 +25,10 @@ body{
        position: absolute;
 
    }
+
+   /*what are you working on for the loading.css can you do the changes into styles.css cause that's what the pages r using rn what*/
    #anim1{
+
        animation-name: s1;
 
    }
