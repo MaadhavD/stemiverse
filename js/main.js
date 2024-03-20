@@ -7,7 +7,15 @@ collapsibles.forEach((item) =>
   })
 );
 
-//document.getElementById("label_fiodjsf").innerText = createAcct;
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
 
 
 window.addEventListener("load", () => {

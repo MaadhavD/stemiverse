@@ -652,6 +652,7 @@ a:visited {
   opacity: 1;
 }
 
+
 /*blocks*/
 .block {
   --paddingVerticle: 4rem;
@@ -668,7 +669,7 @@ a:visited {
 }
 
 .block--dark {
-  background: black;
+  background: #2a2a2a;
   color: #7b858b;
 }
 
@@ -1121,4 +1122,37 @@ table tr:last-child th {
 
 .page--hidden {
     display: none;
+}
+
+.team-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: left;
+  flex-wrap: nowrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.team-member {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.team-member img {
+  margin-top: 100px;
+  margin-right: 50px;
+  width: 200px;
+  height: 200px; 
+  border-radius: 0px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.summary {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
 }
