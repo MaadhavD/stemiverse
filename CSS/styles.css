@@ -559,7 +559,8 @@ a:visited {
 }
 
 .testimonial__image > img {
-  width: 100%;
+  width: 25vh;
+  position: relative;
 }
 
 .testimonial__image > .icon-container {
