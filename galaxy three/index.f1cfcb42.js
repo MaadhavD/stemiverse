@@ -20197,7 +20197,7 @@ class Ko extends Bo {
             clearTimeout(h),
             h = setTimeout(c, 400)
         }
-        ), {
+       ), {
             passive: !1
         })
     }
@@ -20544,8 +20544,8 @@ new class {
         this.raycaster = new Ma,
         this.pointer = new M,
         this.point = new X(0,0,0),
-        this.camera = new $t(70,window.innerWidth / window.innerHeight,.001,100),
-        this.camera.position.set(0, 2, 2),
+        this.camera = new $t(57,window.innerWidth / window.innerHeight,.001,100),
+        this.camera.position.set(4, 5, 4),
         this.controls = new Na(this.camera,this.renderer.domElement),
         this.time = 0,
         this.dracoLoader = new Uo,
