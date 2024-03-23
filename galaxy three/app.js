@@ -62,28 +62,6 @@ export default class Sketch {
 
     // this.addObjects();
     let particleoptions = [
-      {
-        particle_size: .02,
-        particle_size_frequency: 1.188,
-        particle_size_dispersion: .3,
-        rotation_dispersion: .1,
-        time_scale: .01,
-        twist_speed: 0,
-        twist_frequency: 3,
-        twist_dispersion: .1,
-        twist_dispersion_frequency: 2,
-        twist_amplitude: 5,
-        rotation_speed: 0,
-        frequency: 0,
-        amplitude: .346,
-        offset: 0,
-        opacity: 1,
-        cone_shape: 0,
-        color: "#f9ebb8",
-        instance_count: 1e3 ,
-        min_radius: 3,
-        max_radius: 5.3,
-    },
     {
       particle_size: .03,
       particle_size_frequency: .658,
@@ -101,7 +79,7 @@ export default class Sketch {
       offset: .6,
       opacity: .276,
       cone_shape: 1,
-      color: "#f7b373",
+      color: "#C993E9",
       instance_count: 1e4,
       min_radius: .5,
       max_radius: 5,

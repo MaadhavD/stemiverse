@@ -20561,9 +20561,9 @@ new class {
             rotation_dispersion: .1,
             time_scale: .01,
             twist_speed: 0,
-            twist_frequency: 3,
+            twist_frequency: 1.5,
             twist_dispersion: .1,
-            twist_dispersion_frequency: 2,
+            twist_dispersion_frequency: .5,
             twist_amplitude: 5,
             rotation_speed: 0,
             frequency: 0,
@@ -20571,8 +20571,8 @@ new class {
             offset: 0,
             opacity: 1,
             cone_shape: 0,
-            color: "#f9ebb8",
-            instance_count: 1e3,
+            color: "#fefefe",
+            instance_count: 1e2,
             min_radius: 3,
             max_radius: 5.3
         }, {
@@ -20592,7 +20592,7 @@ new class {
             offset: .6,
             opacity: .276,
             cone_shape: 1,
-            color: "#f7b373",
+            color: "#C993E9",
             instance_count: 1e4,
             min_radius: .5,
             max_radius: 5
