@@ -20545,7 +20545,7 @@ new class {
         this.pointer = new M,
         this.point = new X(0,0,0),
         this.camera = new $t(66,window.innerWidth / window.innerHeight,.001,100),
-        this.camera.position.set(4, 5, 4),
+        this.camera.position.set(0, 0, 0),
         this.controls = new Na(this.camera,this.renderer.domElement),
         this.time = 0,
         this.dracoLoader = new Uo,

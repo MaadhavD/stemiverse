@@ -1,26 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Document</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0
-            }
 
-            canvas {
-                display: block
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E" />
+    <title>Stemiverse</title>
 
-            #container {
-                width: 100vw;
-                height: 100vh
-            }
-        </style>
-    </head>
-    <body>
-        <div id="container"></div>
-        <script src="index.f1cfcb42.js" type="module"></script>
-    </body>
+    <style>
+        canvas {
+            display: block
+        }
+
+        #container {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+    <div id="butter ">
+        <div class="loader">
+            <div class="frame">
+                <div class="square1" id="anim1"></div>
+                <div class="square1" id="anim2"></div>
+                <div class="square1" id="anim3"></div>
+                <div class="square1" id="anim4"></div>
+                <div class="square1" id="anim5"></div>
+                <div class="square1" id="anim6"></div>
+                <div class="square1" id="anim7"></div>
+                <div class="square1" id="anim8"></div>
+                <div class="square1" id="anim9"></div>
+            </div>
+        </div>
+
+        <div class="page">
+
+            <nav class="nav collapsible">
+                <a class="nav__brand" href="index.html"><img class="icon" src="/images/logo.jpg"
+                        alt="Stemiverse Logo" /></a>
+                <p style="margin-right: auto; margin-top: auto;">STEMIVERSE</p>
+
+                <svg class="icon icon--white nav__toggler">
+                    <use xlink:href="/images/sprite.svg#menu"></use>
+                </svg>
+
+                <ul class="list nav__list collapsible__content">
+                    <li class="nav__item"><a href="about.html">ABOUT</a></li>
+                    <li class="nav__item"><a href="initiatives.html">INITIATIVES</a></li>
+                    <li class="nav__item"><a href="donate.html">DONATE</a></li>
+                    <li class="nav__item"><a href="team.html">TEAM</a></li>
+                    <li class="nav__item"><a href="contact.html">CONTACT</a></li>
+                </ul>
+
+
+
+        </div>
+
+
+
+
+      </div>
+
+        <div class="textcontainer">
+        </div>
+
+    </div>
+
+
+    <script src="index.f1cfcb42.js" type="module"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/butter.js"></script>
+</body>
+
 </html>

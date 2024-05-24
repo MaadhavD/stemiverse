@@ -19,24 +19,14 @@
 * {
   box-sizing: border-box;
 }
-body {
+body {  
   width: 100%;
   margin: 0;
-}
-.test-div {
-  position: relative;
-  width: 100%;
-  height: 75vh;
 }
 .black-div {
   background-color: #000000;
 }
-.test-heading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
-}
+
 .white-heading {
   color: #ffffff;
 }
@@ -55,7 +45,7 @@ body {
 html {
   font-size: 62.5%;
 }
-/* maadhav i can't start live server can't see if thwhis wyorks lmk if it does wait we can share a tcp server  one sec ok i shared it you can you see ???*/
+
 body {
   font-family: Inter, Arial, Arial, Helvetica, sans-serif;
   font-size: 2.4rem;
@@ -215,8 +205,8 @@ a:visited {
 
 /*icons*/
 .icon {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
 }
 
 .icon--small {
@@ -262,7 +252,7 @@ a:visited {
 }
 
 .btn .icon {
-  width: 2remm;
+  width: 2rem;
   height: 2rem;
   margin-right: 1rem;
   vertical-align: middle;
@@ -710,6 +700,26 @@ a:visited {
   margin: 0;
 }
 
+.textcontainer {
+  width: auto;
+  height: auto;
+  background-color: rgba(64, 11, 104, 0.0); 
+  border-radius: 10px; 
+  padding: 20px;
+  text-align: left;
+  position: absolute;
+  top:45%;
+  bottom:0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 0;
+}
+
+.centertext {
+  color: white;
+}
+
 .nav__item {
   padding: 0.5rem 2rem;
   border-bottom: 1px solid #222;
@@ -1003,11 +1013,14 @@ table tr:last-child th {
   justify-content: center;
   align-items: center;
   background-color: #121212;
+  z-index: 1000000;
+  
 }
 .loader::after {
     content: "";
     width: 75px;
     height: 75px;
+    z-index: 1000000;
 }
 .frame {
   width: 400px;
@@ -1016,6 +1029,7 @@ table tr:last-child th {
   justify-content: center;
   align-items: center;
   background-color: #121212;
+  z-index: 1000000;
 }
 .square1 {
   width: 300px;

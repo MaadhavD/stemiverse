@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const summary = member.querySelector(".summary");
   
       member.addEventListener("click", function() {
-        if (summary.style.display === "none") {
+        if (summary.style.display === "none") {``
           summary.style.display = "block";
         } else {
           summary.style.display = "none";

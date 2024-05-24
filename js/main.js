@@ -20,5 +20,6 @@ function closeNav() {
 
 window.addEventListener("load", () => {
     document.querySelector(".loader").classList.add("loadDone")
+    document.querySelector(".loader").classList.remove("loader")
     document.querySelector(".page--hidden").classList.remove("page--hidden")
 })
