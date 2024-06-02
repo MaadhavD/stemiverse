@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E" />
+    <title>Donate - STEMIVERSE</title>
+
+    <style>
+        .donation-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1em;
+            background: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .donation-form h2 {
+            margin-bottom: 1em;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .donation-form label {
+            margin-bottom: .5em;
+            color: #333;
+            display: block;
+        }
+
+        .donation-form input,
+        .donation-form select {
+            margin-bottom: 1em;
+            padding: .5em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .donation-form button {
+            padding: 0.7em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .donation-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .donation-form .payment-method {
+            display: none;
+        }
+    </style>
+    <script>
+        function showPaymentMethod() {
+            var paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+            document.querySelectorAll('.payment-method').forEach(function (element) {
+                element.style.display = 'none';
+            });
+            document.getElementById(paymentMethod).style.display = 'block';
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container">
+
+        <div class="page">
+
+            <nav class="nav collapsible">
+                <a class="nav__brand" href="index.html"><img class="icon" src="/images/logo.jpg"
+                        alt="Stemiverse Logo" /></a>
+                <p style="margin-right: auto; margin-top: auto;">STEMIVERSE</p>
+
+                <svg class="icon icon--white nav__toggler">
+                    <use xlink:href="/images/sprite.svg#menu"></use>
+                </svg>
+
+                <ul class="list nav__list collapsible__content">
+                    <li class="nav__item"><a href="about.html">ABOUT</a></li>
+                    <li class="nav__item"><a href="initiatives.html">INITIATIVES</a></li>
+                    <li class="nav__item"><a href="donate.html">DONATE</a></li>
+                    <li class="nav__item"><a href="team.html">TEAM</a></li>
+                    <li class="nav__item"><a href="contact.html">CONTACT</a></li>
+                </ul>
+
+            </nav>
+        </div>
+
+        <div class="textcontainer">
+            <div class="donation-form">
+                <h2>Make a Donation</h2>
+                <form action="/process_donation" method="POST">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="amount">Donation Amount (USD):</label>
+                    <input type="number" id="amount" name="amount" required>
+
+                    <label>Payment Method:</label>
+                    <label><input type="radio" name="payment_method" value="card" onclick="showPaymentMethod()" required> Credit/Debit Card</label>
+                    <label><input type="radio" name="payment_method" value="bank" onclick="showPaymentMethod()"> Bank Account</label>
+
+                    <div id="card" class="payment-method">
+                        <label for="card_number">Card Number:</label>
+                        <input type="text" id="card_number" name="card_number">
+
+                        <label for="card_expiry">Expiry Date:</label>
+                        <input type="text" id="card_expiry" name="card_expiry">
+
+                        <label for="card_cvc">CVC:</label>
+                        <input type="text" id="card_cvc" name="card_cvc">
+                    </div>
+
+                    <div id="bank" class="payment-method">
+                        <label for="bank_account">Bank Account Number:</label>
+                        <input type="text" id="bank_account" name="bank_account">
+
+                        <label for="bank_routing">Routing Number:</label>
+                        <input type="text" id="bank_routing" name="bank_routing">
+                    </div>
+
+                    <button type="submit">Donate</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/galaxy three/team2.js" type="module"></script>
+</body>
+
+</html>
