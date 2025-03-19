@@ -3,13 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS\CSS\normalize.css">
     <link rel="stylesheet" href="CSS\CSS\styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com%22%3E" />
     <title>Stemiverse</title>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+
         canvas {
             display: block
         }
@@ -21,56 +25,133 @@
             top: 0;
             z-index: -1;
         }
+
+        /* Styles for the logo and text */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+            margin-left: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container .icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-container p {
+            font-size: 1.5em;
+            color: white;
+        }
+
+        /* Styles for the navigation button */
+        .nav__toggler {
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+            margin-right: 20px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .nav__list {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav__list.active {
+            display: flex;
+        }
+
+        .nav__item {
+            margin: 20px 0;
+        }
+
+        .nav__item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
+        /* --- Debugging CSS (Temporary) --- */
+        #menuButton {
+            width: 200px !important; /* Make it big */
+            height: 200px !important; /* Make it big */
+            position: fixed !important; /* Take it out of the normal flow */
+            top: 50% !important; /* Center vertically */
+            left: 50% !important; /* Center horizontally */
+            transform: translate(-50%, -50%) !important; /* Adjust for the image's size */
+            z-index: 100 !important; /* Make sure it's on top */
+        }
+        /* --- End Debugging CSS --- */
     </style>
 </head>
 
 <body>
     <div id="container">
-    <div id="butter ">
-        <div class="loader">
-            <div class="frame">
-                <div class="square1" id="anim1"></div>
-                <div class="square1" id="anim2"></div>
-                <div class="square1" id="anim3"></div>
-                <div class="square1" id="anim4"></div>
-                <div class="square1" id="anim5"></div>
-                <div class="square1" id="anim6"></div>
-                <div class="square1" id="anim7"></div>
-                <div class="square1" id="anim8"></div>
-                <div class="square1" id="anim9"></div>
+
+        <div id="butter">
+            <div class="loader">
+                <div class="frame">
+                    <div class="square1" id="anim1"></div>
+                    <div class="square1" id="anim2"></div>
+                    <div class="square1" id="anim3"></div>
+                    <div class="square1" id="anim4"></div>
+                    <div class="square1" id="anim5"></div>
+                    <div class="square1" id="anim6"></div>
+                    <div class="square1" id="anim7"></div>
+                    <div class="square1" id="anim8"></div>
+                    <div class="square1" id="anim9"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="page">
-
-            <nav class="nav collapsible">
-                <a class="nav__brand" href="index.html"><img class="icon" src="/stemiverse\galaxy three\logo.jpg"alt="Stemiverse Logo" /></a>
-                <p style="margin-right: auto; margin-top: auto;">STEMIVERSE</p>
-
-                <svg class="icon icon--white nav__toggler">
-                    <use xlink:href="/images/sprite.svg#menu"></use>
-                </svg>
-
-                <ul class="list nav__list collapsible__content">
-                    <li class="nav__item"><a href="stemiverse\Main Site\donate.html">ABOUT</a></li>
-                    <li class="nav__item"><a href="initiatives.html">INITIATIVES</a></li>
-                    <li class="nav__item"><a href="donate.html">DONATE</a></li>
-                    <li class="nav__item"><a href="team.html">TEAM</a></li>
-                    <li class="nav__item"><a href="contact.html">CONTACT</a></li>
-                </ul>
-            
-        <div class="">
-
-
+            <div class="page">
+                <div class="top-text">
+                    <h1>Welcome to Stemiverse!</h1>
+                    <p>We are a 501c3 Non profit working towards furthering stem education.</p>
                 </div>
 
+                <nav class="nav collapsible">
+                    <div class="logo-container">
+                        <a class="nav__brand" href="index.html"><img class="icon"
+                                src="/stemiverse\galaxy three\logo.jpg" alt="Stemiverse Logo" /></a>
+                        <p>STEMIVERSE</p>
+                    </div>
 
+                    <img id="menuButton" class="icon icon--white nav__toggler" src="menu.jpg" alt="Menu">
+
+                    <ul class="list nav__list collapsible__content">
+                        <li class="nav__item"><a href="stemiverse\Main Site\donate.html">ABOUT</a></li>
+                        <li class="nav__item"><a href="initiatives.html">INITIATIVES</a></li>
+                        <li class="nav__item"><a href="donate.html">DONATE</a></li>
+                        <li class="nav__item"><a href="team.html">TEAM</a></li>
+                        <li class="nav__item"><a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-
-
-
-
-      </div>
 
         <div class="textcontainer">
         </div>
@@ -81,6 +162,15 @@
     <script src="index.f1cfcb42.js" type="module"></script>
     <script src="/stemiverse/galaxy three/main.js"></script>
     <script src="/stemiverse/galaxy three/butter.js"></script>
+    <script>
+        // Changed to getElementById
+        const navToggler = document.getElementById('menuButton');
+        const navList = document.querySelector('.nav__list');
+
+        navToggler.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@
     --colorPrimary: #2584ff;
     --colorSecondary: #00d9ff;
     --colorAccent: #ff3400;
-    --colorHeading: #1b0760;
+    --colorHeading: #ffffff;
     --colorBody: #918ca4;
     --colorBodyDarker: #5c5577;
     --colorBorder: #ccc;
@@ -30,6 +30,7 @@
   .white-heading {
     color: #ffffff;
   }
+  
   
   /*Typography*/
   ::selection {
@@ -1171,4 +1172,36 @@
     border: 1px solid #ccc;
     background-color: #f9f9f9;
   }
+
+  .top-text {
+    font-family: "Carrois Gothic", sans-serif;
+    position: absolute;
+    top: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    color: white; 
+    font-size: 24px; 
+    font-family: sans-serif; 
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    pointer-events: none; 
+    text-shadow: 0 0 20px rgb(161, 111, 249); 
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.342); /* Very light white */
+    -webkit-font-smoothing: antialiased;
+
+  }
+
+.top-text h1{
+  font-family: "Didact Gothic", sans-serif;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.358); /* Very light white */
+
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0 0 20px rgb(161, 111, 249); 
+  -webkit-font-smoothing: antialiased;
+
+
+}
+
   
