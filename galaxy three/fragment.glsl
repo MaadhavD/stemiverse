@@ -39,18 +39,30 @@ void main()
   vec3 col = texture2D(_MainTexture, vUv).rgb;
 //   col = SRGBtoLinear(col);
 
-  // planet_mask *= 1.0-exp(-(vDistanceToCamera-2.0));
+  // Modern blue/purple color enhancement - MUCH BRIGHTER
+  vec3 modernBlue = vec3(0.29, 0.62, 1.0);  // #4a9eff
+  vec3 modernPurple = vec3(0.48, 0.41, 0.93); // #7b68ee
+  vec3 cyanAccent = vec3(0.0, 0.85, 1.0); // #00d9ff
+  
+  // Mix colors based on distance and create gradient effect
+  float colorMix = smoothstep(0.0, 1.0, col.r);
+  vec3 enhancedColor = mix(modernBlue, modernPurple, colorMix * 0.6);
+  enhancedColor = mix(enhancedColor, cyanAccent, col.r * 0.3);
+  
+  // Apply base color with enhancement - MUCH BRIGHTER
+  vec3 finalColor = mix(_Color, enhancedColor, 0.9);
+  finalColor += enhancedColor * col.r * 1.2; // Increased glow effect
+  
+  // SIGNIFICANTLY Enhance brightness for visibility
+  finalColor *= 3.5; // Increased from 1.2 to 3.5
 
-  gl_FragColor = vec4(_Color, col.r);
-//   gl_FragColor.a = linearToSRGB(vec3(gl_FragColor.a)).r ;
-
-  // gl_FragColor.rgb = vec3(vDistanceToMouse);
-  // gl_FragColor.rgb = vec3(1.0-exp(-(vDistanceToCamera-1.0)));
-  // gl_FragColor = vec4(1.);
-  // gl_FragColor.a = 1.0;
-  // gl_FragColor.rgb *= planet_mask;
-  //gl_FragColor.a = 1.0;
-  //gl_FragColor.rgb = vec3(vUv, 0.0);
-
+  // Increase alpha for more presence
+  float alpha = col.r * _Opacity * 1.5;
+  gl_FragColor = vec4(finalColor, alpha);
+  
+  // Add stronger glow based on distance
+  float glow = 1.0 - saturate(vDistanceToCamera * 0.05);
+  gl_FragColor.rgb += enhancedColor * glow * 0.8; // Increased from 0.2
+  gl_FragColor.a = alpha;
 }
 

@@ -67,24 +67,24 @@
 
             for(let i = 0; i < planetParticles; i++) {
                 const radius = 40;
-                const phi = Math.acos(-1 + (2 * i) / planetParticles);
-                const theta = Math.sqrt(planetParticles * Math.PI) * phi;
+                const sigmaphi = Math.acos(-1 + (2 * i) / planetParticles);
+                const theta = Math.sqrt(planetParticles * Math.PI) * sigma;
                 
-                const x = radius * Math.cos(theta) * Math.sin(phi);
-                const y = radius * Math.sin(theta) * Math.sin(phi);
-                const z = radius * Math.cos(phi);
+                const x = radius * Math.cos(theta) * Math.sin(sigmaphi);
+                const y = radius * Math.sin(theta) * Math.sin(sigmaphi);
+                const z = radius * Math.cos(sigmaphi);
                 targetPositions.push(new THREE.Vector3(x, y, z));
             }
 
-            const ringInnerRadius = 50; 
+            const ringInnerRadius = 80; 
             const ringOuterRadius = 70; 
-            const tiltAngle = 45 * Math.PI/180; 
+            const tiltAngle = 190 * Math.PI/180; 
 
             for(let i = 0; i < ringParticles; i++) {
                 const angle = (i / ringParticles) * Math.PI * 2;
                 const radius = ringInnerRadius + Math.random() * (ringOuterRadius - ringInnerRadius);
-                const x = Math.cos(angle) * radius;
-                let y = Math.sin(angle) * radius;
+                const x = Math.sin(angle) * radius - 0;
+                let y = Math.cos(angle) * radius - 10;
                 const z = 0;
                 
                 const rotatedY = y * Math.cos(tiltAngle) - z * Math.sin(tiltAngle);
@@ -92,7 +92,7 @@
 
                 const rotatedX = x * Math.tan(tiltAngle) -  z * Math.tan(tiltAngle)
                 
-                targetPositions.push(new THREE.Vector3(rotatedX, rotatedY, rotatedZ));
+                targetPositions.push(new THREE.Vector3(rotatedX, rotatedY - 15, rotatedZ));
             }
         }
 
@@ -151,7 +151,7 @@
         function animate() {
             requestAnimationFrame(animate);
             
-            particles.rotation.y += 0.005; 
+            particles.rotation.y += 0.0; 
             particles.rotation.x += 0.00; 
             
             renderer.render(scene, camera);

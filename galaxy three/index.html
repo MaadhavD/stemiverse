@@ -15,7 +15,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
 
         canvas {
-            display: block
+            display: block !important;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
         }
 
         #container {
@@ -23,29 +28,86 @@
             height: 100vh;
             position: fixed;
             top: 0;
-            z-index: -1;
+            left: 0;
+            z-index: 0;
+            background: #000000;
+            overflow: hidden;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: none;
+        }
+
+        #container canvas {
+            display: block !important;
+            width: 100% !important;
+            height: 100% !important;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 1 !important;
+            visibility: visible !important;
+            z-index: 0 !important;
+            pointer-events: none;
+        }
+
+        /* Angle the galaxy container - positioned to the side */
+        #container {
+            transform: perspective(1200px) rotateY(-25deg) rotateX(10deg) translateX(-5%) translateZ(0px);
+            transform-origin: center center;
+            transform-style: preserve-3d;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transition: transform 0.05s linear, opacity 0.3s ease-out;
+        }
+
+        body {
+            background: #000000;
+            overflow-x: hidden;
+            overflow-y: auto !important;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            position: relative;
+            min-height: 100vh;
+            height: auto !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-y: auto !important;
+            height: auto !important;
         }
 
         /* Styles for the logo and text */
+        /* Styles for the logo and text - fixed to viewport, not canvas */
         .logo-container {
-            display: flex;
+            display: flex !important;
             align-items: center;
-            margin-top: 50px;
-            margin-left: 20px;
-            position: relative;
-            z-index: 2;
+            margin-top: 0;
+            margin-left: 0;
+            position: fixed !important;
+            top: 20px !important;
+            left: 20px !important;
+            z-index: 10000 !important;
+            pointer-events: auto !important;
+            transform: none !important;
         }
 
-        .logo-container .icon {
+        .logo-container img {
             width: 50px;
             height: 50px;
-            margin-right: 10px;
+            margin-right: 12px;
         }
 
         .logo-container p {
-            font-size: 1.5em;
+            font-size: 1.8rem;
             color: white;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin: 0;
         }
+
 
         /* Styles for the navigation button */
         .nav__toggler {
@@ -64,7 +126,8 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(1.5px);
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -89,29 +152,276 @@
 
         .nav {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             width: 100%;
-            position: relative;
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 2rem 4rem;
+            z-index: 50;
         }
 
-        /* --- Debugging CSS (Temporary) --- */
-        #menuButton {
-            width: 200px !important; /* Make it big */
-            height: 200px !important; /* Make it big */
-            position: fixed !important; /* Take it out of the normal flow */
-            top: 50% !important; /* Center vertically */
-            left: 50% !important; /* Center horizontally */
-            transform: translate(-50%, -50%) !important; /* Adjust for the image's size */
-            z-index: 100 !important; /* Make sure it's on top */
+        .diamond-menu {
+            position: fixed !important;
+            top: 20px !important;
+            right: 20px !important;
+            z-index: 99999 !important;
+            cursor: pointer !important;
+            width: 30px;
+            height: 30px;
+            transform: rotate(45deg) !important;
+            transition: all 0.3s ease;
+            pointer-events: auto !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
-        /* --- End Debugging CSS --- */
+        
+        .diamond-menu,
+        .diamond-menu * {
+            pointer-events: auto !important;
+            z-index: 99999 !important;
+        }
+
+        .diamond-menu .outer-diamond {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+
+
+        .diamond-menu:hover {
+            transform: rotate(45deg) scale(1.5);
+        }
+
+        .diamond-menu:hover .outer-diamond {
+            border-color: #4a9eff;
+        }
+
+        /* Modern Hero Section - Hidden */
+        .hero-section {
+            display: none;
+        }
+
+
+        /* Content Sections */
+        .content-section {
+            position: relative;
+            min-height: 100vh;
+            padding: 8rem 4rem;
+            z-index: 5;
+            background: transparent;
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            margin-top: 0;
+            pointer-events: auto;
+        }
+
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        /* First section starts at viewport height */
+        /* Hero section is first, about starts after */
+        #hero {
+            margin-top: 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        #about {
+            margin-top: 0;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(3rem, 6vw, 6rem);
+            font-weight: 300;
+            color: white;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+        }
+
+        .content-section.visible .section-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-text {
+            font-size: clamp(1.6rem, 2vw, 2rem);
+            color: var(--colorBody);
+            line-height: 1.8;
+            max-width: 700px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+        }
+
+        .content-section.visible .section-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Statistics Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 4rem;
+            margin: 6rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .content-section.visible .stat-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+
+        .content-section.visible .stat-item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        .content-section.visible .stat-item:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+
+        .content-section.visible .stat-item {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .stat-number {
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-weight: 300;
+            color: #4a9eff;
+            font-family: 'Merriweather', serif;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .content-section.visible .stat-item:nth-child(1) .stat-number {
+            transition-delay: 0.3s;
+        }
+
+        .content-section.visible .stat-item:nth-child(2) .stat-number {
+            transition-delay: 0.5s;
+        }
+
+        .content-section.visible .stat-item:nth-child(3) .stat-number {
+            transition-delay: 0.7s;
+        }
+
+        .content-section.visible .stat-number {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stat-label {
+            font-size: 1.4rem;
+            color: var(--colorBody);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .content-section.visible .stat-item:nth-child(1) .stat-label {
+            transition-delay: 0.4s;
+        }
+
+        .content-section.visible .stat-item:nth-child(2) .stat-label {
+            transition-delay: 0.6s;
+        }
+
+        .content-section.visible .stat-item:nth-child(3) .stat-label {
+            transition-delay: 0.8s;
+        }
+
+        .content-section.visible .stat-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Initiatives Grid */
+        .initiatives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .initiative-card {
+            background: rgba(10, 10, 10, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 3rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+        }
+
+        .content-section.visible .initiative-card:nth-child(1) {
+            transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s, all 0.3s ease;
+        }
+
+        .content-section.visible .initiative-card:nth-child(2) {
+            transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s, all 0.3s ease;
+        }
+
+        .content-section.visible .initiative-card:nth-child(3) {
+            transition: opacity 0.8s ease-out 0.6s, transform 0.8s ease-out 0.6s, all 0.3s ease;
+        }
+
+        .content-section.visible .initiative-card {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .initiative-card:hover {
+            border-color: #4a9eff;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(74, 158, 255, 0.2);
+        }
+
+        .initiative-card h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .initiative-card p {
+            font-size: 1.6rem;
+            color: var(--colorBody);
+            line-height: 1.6;
+        }
     </style>
 </head>
 
 <body>
     <div id="container">
-
         <div id="butter">
             <div class="loader">
                 <div class="frame">
@@ -127,21 +437,9 @@
                 </div>
             </div>
 
-            <div class="page">
-                <div class="top-text">
-                    <h1>Welcome to Stemiverse!</h1>
-                    <p>We are a 501c3 Non profit working towards furthering stem education.</p>
-                </div>
-
+            <div class="page--hidden">
+                <!-- Modern Navigation -->
                 <nav class="nav collapsible">
-                    <div class="logo-container">
-                        <a class="nav__brand" href="index.html"><img class="icon"
-                                src="/stemiverse\galaxy three\logo.jpg" alt="Stemiverse Logo" /></a>
-                        <p>STEMIVERSE</p>
-                    </div>
-
-                    <img id="menuButton" class="icon icon--white nav__toggler" src="menu.jpg" alt="Menu">
-
                     <ul class="list nav__list collapsible__content">
                         <li class="nav__item"><a href="stemiverse\Main Site\donate.html">ABOUT</a></li>
                         <li class="nav__item"><a href="initiatives.html">INITIATIVES</a></li>
@@ -150,18 +448,102 @@
                         <li class="nav__item"><a href="contact.html">CONTACT</a></li>
                     </ul>
                 </nav>
-            </div>
-        </div>
 
-        <div class="textcontainer">
+            </div>
         </div>
 
     </div>
 
+    <!-- Logo at top left - fixed to viewport, outside container -->
+    <div class="logo-container" style="position: fixed !important; top: 20px !important; left: 20px !important; z-index: 10000 !important; transform: none !important;">
+        <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="logo.jpg" alt="Stemiverse Logo" />
+            <p>STEMIVERSE</p>
+        </a>
+    </div>
+
+    <!-- Menu button - fixed to viewport, always on top -->
+    <div class="diamond-menu" id="menuButton" style="position: fixed !important; top: 20px !important; right: 20px !important; z-index: 99999 !important; pointer-events: auto !important; cursor: pointer !important;">
+        <div class="outer-diamond" style="pointer-events: auto !important;"></div>
+        <div class="inner-diamond" style="pointer-events: auto !important;"></div>
+    </div>
+
+    <!-- Content Sections - Outside container so they can scroll -->
+    <div class="content-section" id="about">
+        <div class="section-content">
+            <h2 class="section-title">We have deep<br>STEM experience</h2>
+            <p class="section-text">We are a 501c3 nonprofit working towards furthering STEM education. Our mission is to inspire and empower the next generation of scientists, technologists, engineers, and mathematicians through innovative programs and partnerships.</p>
+        </div>
+    </div>
+
+    <div class="content-section" id="statistics">
+        <div class="section-content">
+            <h2 class="section-title">Our Impact</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Students Reached</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Programs Launched</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Partner Schools</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section" id="initiatives">
+        <div class="section-content">
+            <h2 class="section-title">Our Initiatives</h2>
+            <p class="section-text">We cultivate unique expertise to enable all-around growth of STEM education programs.</p>
+            <div class="initiatives-grid">
+                <div class="initiative-card">
+                    <h3>Educational Workshops</h3>
+                    <p>Hands-on workshops that bring STEM concepts to life through interactive learning experiences.</p>
+                </div>
+                <div class="initiative-card">
+                    <h3>Mentorship Programs</h3>
+                    <p>Connecting students with industry professionals to guide their STEM journey.</p>
+                </div>
+                <div class="initiative-card">
+                    <h3>Research Opportunities</h3>
+                    <p>Providing students with real-world research experiences and project-based learning.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section" id="approach">
+        <div class="section-content">
+            <h2 class="section-title">Our Approach</h2>
+            <p class="section-text">We have cultivated a unique set of expertise to enable all-around growth of STEM education businesses and programs.</p>
+        </div>
+    </div>
+
+    <div class="content-section" id="contact">
+        <div class="section-content">
+            <h2 class="section-title">Get Involved</h2>
+            <p class="section-text">Join us in our mission to inspire the next generation of STEM leaders. Whether you're a student, educator, or supporter, there's a place for you in our community.</p>
+            <div style="margin-top: 4rem;">
+                <a href="donate.html" class="scroll-indicator" style="display: inline-flex; text-decoration: none;">
+                    <span>Support Our Mission</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
 
     <script src="index.f1cfcb42.js" type="module"></script>
-    <script src="/stemiverse/galaxy three/main.js"></script>
-    <script src="/stemiverse/galaxy three/butter.js"></script>
+    <script src="main.js"></script>
+    <!-- butter.js disabled to allow normal scrolling -->
+    <!-- <script src="butter.js"></script> -->
     <script>
         // Changed to getElementById
         const navToggler = document.getElementById('menuButton');
@@ -169,7 +551,172 @@
 
         navToggler.addEventListener('click', () => {
             navList.classList.toggle('active');
+            window.location.href = "menu.html"; // Replace with your menu page URL
         });
+
+
+        // Smooth scroll with zoom/parallax effect
+        let lastScrollTop = 0;
+        let scrollTimeout;
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+            
+            // Add scrolling class for zoom effect
+            document.body.classList.add('scrolling');
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                document.body.classList.remove('scrolling');
+            }, 150);
+            
+            // Parallax zoom effect - traveling through space
+            const container = document.getElementById('container');
+            if (container) {
+                // Calculate scroll progress (0 to 1)
+                const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+                const scrollProgress = Math.min(scrollTop / maxScroll, 1);
+                
+                // Galaxy fades out and moves away as you scroll
+                // First 30% of scroll: zoom in and move forward
+                // After 30%: fade out and move further away
+                if (scrollProgress < 0.3) {
+                    // Phase 1: Traveling into the galaxy (zoom in)
+                    const phase1Progress = scrollProgress / 0.3;
+                    const scale = 1 + (phase1Progress * 0.5); // Zoom in up to 50%
+                    const translateZ = phase1Progress * -300; // Move forward in 3D space
+                    const opacity = 1;
+                    container.style.transform = `perspective(1200px) rotateY(-25deg) rotateX(10deg) translateX(-5%) translateZ(${translateZ}px) scale(${scale})`;
+                    container.style.opacity = opacity;
+                } else {
+                    // Phase 2: Galaxy fades out and moves away
+                    const phase2Progress = (scrollProgress - 0.3) / 0.7;
+                    const scale = 1.5 + (phase2Progress * 0.5); // Continue zooming
+                    const translateZ = -300 - (phase2Progress * 500); // Move further away
+                    const opacity = 1 - (phase2Progress * 0.8); // Fade out to 20% opacity
+                    const translateY = phase2Progress * 50; // Move down slightly
+                    container.style.transform = `perspective(1200px) rotateY(-25deg) rotateX(10deg) translateX(-5%) translateY(${translateY}px) translateZ(${translateZ}px) scale(${scale})`;
+                    container.style.opacity = Math.max(opacity, 0.2);
+                }
+            }
+            
+            lastScrollTop = scrollTop;
+        }, { passive: true });
+
+        // Enhanced scroll animations using Intersection Observer
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections with initial hidden state (except hero)
+        document.querySelectorAll('.content-section').forEach(section => {
+            if (section.id !== 'hero') {
+                observer.observe(section);
+            }
+        });
+
+        // Nav scroll effect
+        const nav = document.querySelector('.nav');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Show page content after load - override butter.js if needed
+        function showPageContent() {
+            const pageHidden = document.querySelector('.page--hidden');
+            if (pageHidden) {
+                pageHidden.classList.remove('page--hidden');
+                pageHidden.classList.add('page--visible');
+            }
+            
+            // Disable butter.js smooth scroll to allow normal scrolling
+            if (window.butter && window.butter.active) {
+                window.butter.cancel();
+            }
+            
+            // Ensure body can scroll - override butter.js
+            document.body.style.height = 'auto';
+            document.body.style.overflowY = 'auto';
+            document.documentElement.style.height = 'auto';
+            document.documentElement.style.overflowY = 'auto';
+            
+            // Make sure content sections are visible
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'block';
+            });
+        }
+
+        // Show immediately on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', showPageContent);
+        } else {
+            showPageContent();
+        }
+
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+            setTimeout(showPageContent, 500);
+        });
+
+        // Force show after delays
+        setTimeout(() => {
+            document.body.classList.add('loaded');
+            showPageContent();
+        }, 1500);
+        setTimeout(showPageContent, 3000);
+
+        // Ensure galaxy animation container stays visible and bright
+        const container = document.getElementById('container');
+        if (container) {
+            // Set initial transform for angled view
+            const initialTransform = 'perspective(1200px) rotateY(-25deg) rotateX(10deg) translateX(-5%)';
+            container.style.transform = initialTransform;
+            container.style.transformOrigin = 'center center';
+            container.style.transformStyle = 'preserve-3d';
+            container.style.opacity = '1';
+            container.style.visibility = 'visible';
+            container.style.zIndex = '0';
+            
+            // Monitor canvas and ensure it stays visible
+            const canvasObserver = new MutationObserver(() => {
+                const canvas = container.querySelector('canvas');
+                if (canvas) {
+                    canvas.style.opacity = '1';
+                    canvas.style.visibility = 'visible';
+                    canvas.style.zIndex = '0';
+                    canvas.style.pointerEvents = 'none';
+                }
+            });
+            
+            canvasObserver.observe(container, { childList: true, subtree: true });
+            
+            // Also check after Three.js initializes
+            setTimeout(() => {
+                const canvas = container.querySelector('canvas');
+                if (canvas) {
+                    canvas.style.opacity = '1';
+                    canvas.style.visibility = 'visible';
+                    canvas.style.zIndex = '0';
+                    canvas.style.pointerEvents = 'none';
+                }
+            }, 2000);
+        }
     </script>
 </body>
 

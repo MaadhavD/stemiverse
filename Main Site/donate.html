@@ -4,57 +4,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/normalize.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E" />
+    <link rel="stylesheet" href="../galaxy three/CSS/CSS/styles.css">
+    <link rel="stylesheet" href="../galaxy three/CSS/CSS/normalize.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
     <title>Donate - STEMIVERSE</title>
 
     <style>
-        .donation-form {
-            max-width: 600px;
+        canvas {
+            display: block
+        }   
+
+        #container {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            z-index: -1;
+        }
+
+        .donate-page {
+            position: relative;
+            min-height: 100vh;
+            padding: 12rem 4rem 8rem;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .donate-header {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            text-align: center;
+        }
+
+        .donate-header h1 {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-weight: 300;
+            color: white;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .donate-header p {
+            font-size: 2rem;
+            color: var(--colorBody);
+            max-width: 700px;
             margin: 0 auto;
-            padding: 1em;
-            background: #f9f9f9;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+
+        .donation-form {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem;
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
         }
 
         .donation-form h2 {
-            margin-bottom: 1em;
-            font-size: 24px;
-            color: #333;
+            margin-bottom: 3rem;
+            font-size: 3rem;
+            font-family: 'Merriweather', serif;
+            font-weight: 300;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 2.5rem;
         }
 
         .donation-form label {
-            margin-bottom: .5em;
-            color: #333;
             display: block;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.4rem;
+            font-weight: 300;
         }
 
         .donation-form input,
         .donation-form select {
-            margin-bottom: 1em;
-            padding: .5em;
-            border: 1px solid #ccc;
-            border-radius: 5px;
             width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 1.6rem;
+            transition: all 0.3s ease;
+        }
+
+        .donation-form input:focus,
+        .donation-form select:focus {
+            outline: none;
+            border-color: var(--accentBlue);
+            box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.2);
+        }
+
+        .donation-form input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
         }
 
         .donation-form button {
-            padding: 0.7em;
+            width: 100%;
+            padding: 1.5rem;
             color: #fff;
-            background-color: #007bff;
+            background: linear-gradient(135deg, var(--accentBlue), var(--accentPurple));
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
         }
 
         .donation-form button:hover {
-            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(74, 158, 255, 0.3);
         }
 
         .donation-form .payment-method {
             display: none;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .payment-option:hover {
+            background: rgba(74, 158, 255, 0.1);
+        }
+
+        .payment-option input[type="radio"] {
+            width: auto;
+            margin: 0;
         }
     </style>
     <script>
@@ -70,16 +168,16 @@
 
 <body>
     <div id="container">
-
         <div class="page">
-
             <nav class="nav collapsible">
-                <a class="nav__brand" href="index.html"><img class="icon" src="/images/logo.jpg"
-                        alt="Stemiverse Logo" /></a>
-                <p style="margin-right: auto; margin-top: auto;">STEMIVERSE</p>
+                <div class="logo-container">
+                    <a class="nav__brand" href="../galaxy three/index.html"><img class="icon" src="../images/logo.jpg"
+                            alt="Stemiverse Logo" /></a>
+                    <p>STEMIVERSE</p>
+                </div>
 
                 <svg class="icon icon--white nav__toggler">
-                    <use xlink:href="/images/sprite.svg#menu"></use>
+                    <use xlink:href="../images/sprite.svg#menu"></use>
                 </svg>
 
                 <ul class="list nav__list collapsible__content">
@@ -89,54 +187,86 @@
                     <li class="nav__item"><a href="team.html">TEAM</a></li>
                     <li class="nav__item"><a href="contact.html">CONTACT</a></li>
                 </ul>
-
             </nav>
         </div>
-
-        <div class="textcontainer">
-            <div class="donation-form">
-                <h2>Make a Donation</h2>
-                <form action="/process_donation" method="POST">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-
-                    <label for="amount">Donation Amount (USD):</label>
-                    <input type="number" id="amount" name="amount" required>
-
-                    <label>Payment Method:</label>
-                    <label><input type="radio" name="payment_method" value="card" onclick="showPaymentMethod()" required> Credit/Debit Card</label>
-                    <label><input type="radio" name="payment_method" value="bank" onclick="showPaymentMethod()"> Bank Account</label>
-
-                    <div id="card" class="payment-method">
-                        <label for="card_number">Card Number:</label>
-                        <input type="text" id="card_number" name="card_number">
-
-                        <label for="card_expiry">Expiry Date:</label>
-                        <input type="text" id="card_expiry" name="card_expiry">
-
-                        <label for="card_cvc">CVC:</label>
-                        <input type="text" id="card_cvc" name="card_cvc">
-                    </div>
-
-                    <div id="bank" class="payment-method">
-                        <label for="bank_account">Bank Account Number:</label>
-                        <input type="text" id="bank_account" name="bank_account">
-
-                        <label for="bank_routing">Routing Number:</label>
-                        <input type="text" id="bank_routing" name="bank_routing">
-                    </div>
-
-                    <button type="submit">Donate</button>
-                </form>
-            </div>
-        </div>
-
     </div>
 
-    <script src="/galaxy three/team2.js" type="module"></script>
+    <div class="donate-page">
+        <div class="donate-header">
+            <h1>Support STEM Education</h1>
+            <p>Your donation helps us reach more students and create innovative STEM education programs that inspire the next generation.</p>
+        </div>
+
+        <div class="donation-form">
+            <h2>Make a Donation</h2>
+            <form action="/process_donation" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Donation Amount (USD)</label>
+                    <input type="number" id="amount" name="amount" placeholder="0.00" min="1" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <div class="payment-option">
+                        <input type="radio" id="card" name="payment_method" value="card" onclick="showPaymentMethod()" required>
+                        <label for="card" style="margin: 0; cursor: pointer;">Credit/Debit Card</label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="bank" name="payment_method" value="bank" onclick="showPaymentMethod()">
+                        <label for="bank" style="margin: 0; cursor: pointer;">Bank Account</label>
+                    </div>
+                </div>
+
+                <div id="card-details" class="payment-method">
+                    <div class="form-group">
+                        <label for="card_number">Card Number</label>
+                        <input type="text" id="card_number" name="card_number" placeholder="1234 5678 9012 3456">
+                    </div>
+                    <div class="form-group">
+                        <label for="card_expiry">Expiry Date</label>
+                        <input type="text" id="card_expiry" name="card_expiry" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group">
+                        <label for="card_cvc">CVC</label>
+                        <input type="text" id="card_cvc" name="card_cvc" placeholder="123">
+                    </div>
+                </div>
+
+                <div id="bank-details" class="payment-method">
+                    <div class="form-group">
+                        <label for="bank_account">Bank Account Number</label>
+                        <input type="text" id="bank_account" name="bank_account" placeholder="Enter account number">
+                    </div>
+                    <div class="form-group">
+                        <label for="bank_routing">Routing Number</label>
+                        <input type="text" id="bank_routing" name="bank_routing" placeholder="Enter routing number">
+                    </div>
+                </div>
+
+                <button type="submit">Donate Now</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showPaymentMethod() {
+            var paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+            document.getElementById('card-details').style.display = paymentMethod === 'card' ? 'block' : 'none';
+            document.getElementById('bank-details').style.display = paymentMethod === 'bank' ? 'block' : 'none';
+        }
+    </script>
+    <script src="../galaxy three/main.js"></script>
+    <script src="../galaxy three/team2.js" type="module"></script>
 </body>
 
 </html>

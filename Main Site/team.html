@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/normalize.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E" />
-    <title>e</title>
+    <link rel="stylesheet" href="../galaxy three/CSS/CSS/styles.css">
+    <link rel="stylesheet" href="../galaxy three/CSS/CSS/normalize.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+    <title>Team - Stemiverse</title>
 
     <style>
         canvas{
@@ -21,21 +22,113 @@
             top: 0;
             z-index: -1;
         }
+
+        .team-page {
+            position: relative;
+            min-height: 100vh;
+            padding: 12rem 4rem 8rem;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .team-header {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            text-align: center;
+        }
+
+        .team-header h1 {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-weight: 300;
+            color: white;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .team-header p {
+            font-size: 2rem;
+            color: var(--colorBody);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member-card {
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accentBlue);
+            box-shadow: 0 10px 30px rgba(74, 158, 255, 0.2);
+        }
+
+        .team-member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--accentBlue), var(--accentPurple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            font-weight: 300;
+        }
+
+        .team-member-name {
+            font-family: 'Merriweather', serif;
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member-role {
+            font-size: 1.4rem;
+            color: var(--accentBlue);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .team-member-bio {
+            font-size: 1.4rem;
+            color: var(--colorBody);
+            line-height: 1.6;
+        }
     </style>
 </head>
 
 <body>
     <div id="container">
-
         <div class="page">
-
             <nav class="nav collapsible">
-                <a class="nav__brand" href="index.html"><img class="icon" src="/images/logo.jpg"
-                        alt="Stemiverse Logo" /></a>
-                <p style="margin-right: auto; margin-top: auto;">STEMIVERSE</p>
+                <div class="logo-container">
+                    <a class="nav__brand" href="../galaxy three/index.html"><img class="icon" src="../images/logo.jpg"
+                            alt="Stemiverse Logo" /></a>
+                    <p>STEMIVERSE</p>
+                </div>
 
                 <svg class="icon icon--white nav__toggler">
-                    <use xlink:href="/images/sprite.svg#menu"></use>
+                    <use xlink:href="../images/sprite.svg#menu"></use>
                 </svg>
 
                 <ul class="list nav__list collapsible__content">
@@ -45,23 +138,40 @@
                     <li class="nav__item"><a href="team.html">TEAM</a></li>
                     <li class="nav__item"><a href="contact.html">CONTACT</a></li>
                 </ul>
-l
-
-
+            </nav>
         </div>
-
-
-
-
-      </div>
-
-        <div class="textcontainer">
-        </div>
-
     </div>
 
+    <div class="team-page">
+        <div class="team-header">
+            <h1>Our Team</h1>
+            <p>We have deep STEM experience and are passionate about inspiring the next generation of innovators.</p>
+        </div>
 
-    <script src="/galaxy three/team2.js" type="module"></script>
+        <div class="team-grid">
+            <div class="team-member-card">
+                <div class="team-member-image">JD</div>
+                <h3 class="team-member-name">John Doe</h3>
+                <div class="team-member-role">Executive Director</div>
+                <p class="team-member-bio">Leading our mission to expand STEM education opportunities nationwide.</p>
+            </div>
+            <div class="team-member-card">
+                <div class="team-member-image">JS</div>
+                <h3 class="team-member-name">Jane Smith</h3>
+                <div class="team-member-role">Program Director</div>
+                <p class="team-member-bio">Designing innovative programs that make STEM accessible to all students.</p>
+            </div>
+            <div class="team-member-card">
+                <div class="team-member-image">MJ</div>
+                <h3 class="team-member-name">Mike Johnson</h3>
+                <div class="team-member-role">Education Lead</div>
+                <p class="team-member-bio">Connecting students with real-world STEM applications and mentors.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../galaxy three/main.js"></script>
+    <script src="../galaxy three/team2.js" type="module"></script>
 </body>
 
 </html>
